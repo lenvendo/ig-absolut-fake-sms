@@ -42,7 +42,7 @@ func main() {
 	defer nc.Close()
 
 	c.Logger.Info("Connected to NATS at:", zap.String("ConnectedUrl", nc.ConnectedUrl()))
-	subscription, err := nc.Subscribe("tasks", c.WorkerService.SendHandler)
+	subscription, err := nc.Subscribe(cfg.Nats.Subject, c.WorkerService.SendHandler)
 
 	var codesHttpServer *http.Server
 	{

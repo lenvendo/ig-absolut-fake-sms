@@ -50,6 +50,7 @@ type Config struct {
 type NatsConfig struct {
 	Host       string `envconfig:"HOST"`
 	Port       int    `envconfig:"PORT"`
+	Subject    string `envconfig:"SUBJECT"`
 	RetryLimit int    `envconfig:"RETRYLIMIT"`
 	WaitLimit  int    `envconfig:"WAITLIMIT"`
 	Username   string `envconfig:"USERNAME"`
