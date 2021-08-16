@@ -14,10 +14,6 @@ mkdir -m 777 /var/lib/postgresql/log
 cat /var/lib/postgresql/data/postgresql.conf
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
-	CREATE DATABASE $POSTGRES_DB;
-	GRANT ALL PRIVILEGES ON DATABASE $POSTGRES_DB TO $POSTGRES_USER;
-EOSQL
-psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
 	create table if not exists code
 (
     id bigserial not null
@@ -27,5 +23,6 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-E
     code integer
 );
 
-alter table code owner to fake_sms;
+alter table code owner to $POSTGRES_USER;
+GRANT ALL PRIVILEGES ON DATABASE $POSTGRES_DB TO $POSTGRES_USER;
 EOSQL

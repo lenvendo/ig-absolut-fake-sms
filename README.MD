@@ -15,9 +15,13 @@
 
 ## Конфигурация
 
-Создать в корне конфигурационный файл .env
+1. Создать в [корне](./) конфигурационный файл .env
 
 Пример: [.env.example](.env.example)
+
+2. Создать в папке [structure](structure) конфигурационный файл .env
+
+Пример: [structure/.env.example](structure/.env.example)
 
 ## Запуск
 ```
