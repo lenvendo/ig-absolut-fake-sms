@@ -11,26 +11,26 @@ services:
     hostname: nats-server
   postgres:
     build: ./docker/postgresql
-    container_name: github.com/lenvendo/ig-absolut-fake-sms_psql
+    container_name: fakesms_psql
     ports:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
     env_file:
       - ./.env
     volumes:
-      - github.com/lenvendo/ig-absolut-fake-sms_psql_data:/var/lib/postgresql/data:delegated
+      - fakesms_psql_data:/var/lib/postgresql/data:delegated
     networks:
-      - github.com/lenvendo/ig-absolut-fake-sms
+      - fakesms
 
 
 volumes:
-  github.com/lenvendo/ig-absolut-fake-sms_psql_data:
+  fakesms_psql_data:
     driver: local
 
 
 networks:
-  github.com/lenvendo/ig-absolut-fake-sms:
-    name: github.com/lenvendo/ig-absolut-fake-sms
+  fakesms:
+    name: fakesms
     driver: bridge
     ipam:
       config:
-        - subnet: 172.21.21.0/24
+        - subnet: 172.21.22.0/24

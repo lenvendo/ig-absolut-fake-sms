@@ -1,14 +1,14 @@
 Необходимо реализовать 2 сервиса:
 --------------------------------
  - Api (Основной сервис регистрации)
- - github.com/lenvendo/ig-absolut-fake-sms (Фейковый сервис отправки смс)
+ - fakesms (Фейковый сервис отправки смс)
 # Api:
 ---
 Состав api ручек:
 ## POST /user/reg
 Ручка регистрации/логина пользователя по номеру телефона.
 при вводе телефона мы должны отправить проверочный код по смс через сервис
-github.com/lenvendo/ig-absolut-fake-sms
+fakesms
 ## POST /user/confirm
 Ручка подтверждения кода из смс
 
@@ -24,7 +24,7 @@ github.com/lenvendo/ig-absolut-fake-sms
  - is_confirmed
  - created_at
  - updated_at
-# github.com/lenvendo/ig-absolut-fake-sms:
+# fakesms:
 ---
 Сервис, который будет принимать задания по отправке смс от сервиса **Api**
 и складывать коды отправки в файл(либо в другое хранилище)
@@ -39,7 +39,7 @@ github.com/lenvendo/ig-absolut-fake-sms
 
 1. Использовать Docker для каждого сервиса
 
-2. Коммуникация между Api -> github.com/lenvendo/ig-absolut-fake-sms через очередь (любая очередь: redis, rabbitMq, и
+2. Коммуникация между Api -> fakesms через очередь (любая очередь: redis, rabbitMq, и
 т.п)
 3. Покрытие кода Unit тестами
 

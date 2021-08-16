@@ -3,8 +3,6 @@ package service
 import (
 	"encoding/json"
 	"gorm.io/gorm"
-	"math/rand"
-
 	"go.uber.org/zap"
 	"github.com/nats-io/nats.go"
 
@@ -39,7 +37,7 @@ func (ws *WorkerService) SendCode(message *model.Message) error {
 
 	code := model.NewCodeModel()
 	code.Phone = message.Phone
-	code.Code = rand.Intn(9999-1000) + 1000
+	code.Code = message.Code
 	err := ws.Gorm.
 		Table("code").
 		Save(code).Error
